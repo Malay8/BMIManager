@@ -23,31 +23,30 @@ public class App {
 
             switch (choice) {
                 case 1: {
-                    double height,weight;
-                    //double bmi = ((weight * 703)/(height * height));
-                    System.out.println("Enter your name: ");
-                    String name = scanner.nextLine();
-
-                    System.out.println("Enter your age:");
-                    String age = scanner.nextLine();
-
-                    System.out.println("Enter your height and weight: ");
-                    String details = scanner.nextLine();
+                    addPatient(patient, scanner);
                     break;
                 }
                 case 2: {
-
-                    System.out.println("Your name is " + "%s");
-                    System.out.println("Your age is " + "%d");
-                    System.out.println("Your bmi is " + "%.2f");
+                    viewPatient(patient);
                     break;
                 }
                 case 3: {
-                    System.out.println("Good Bye!");
+                    System.out.println("Good bye!");
                     break running;
                 }
-
             }
         }
+    }
+    private static void viewPatient(Patient patient) {
+        System.out.println(String.format("Name: %s Age: %d BMI:%.2f", patient.getName(), patient.getAge(), patient.getBMI()));
+    }
+
+    private static void addPatient(Patient patient, Scanner scanner){
+        System.out.print("Enter your Name: ");
+        patient.setName(scanner.nextLine());
+        System.out.print("Enter your Age: ");
+        patient.setAge(scanner.nextInt());
+        System.out.print("Height and Weight: ");
+        patient.setDetails(scanner.nextDouble(), scanner.nextDouble());
     }
 }
